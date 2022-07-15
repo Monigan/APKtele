@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.ApplicationFragment">
+
+    <ImageView
+        android:id="@+id/app_background"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTintMode="screen"
+        android:scaleType="centerCrop"
+        android:src="@drawable/sb_bg" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom">
+
+        <ImageView
+            android:id="@+id/app_mainbg"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_app_mainbackground"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/app_ico"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="24dp"
+            android:src="@drawable/sb_ico"
+            app:layout_constraintStart_toStartOf="@+id/app_mainbg"
+            app:layout_constraintTop_toTopOf="@+id/app_mainbg" />
+
+        <TextView
+            android:id="@+id/app_fulldescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="29dp"
+            android:layout_marginHo=""
+            android:text="The Subway Surfers World Tour is feeling the love in San Francisco. Team up with Super Runner Tricky, her Trickster Board, and Pride Miss Maia. A Universal App with HD optimized graphics for retina resolution."
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/space" />
+
+        <TextView
+            android:id="@+id/app_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:background="@color/app_tag_color"
+            android:paddingHorizontal="17dp"
+            android:paddingVertical="2dp"
+            android:text="Action"
+
+            android:textColor="@color/main_color"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="@id/app_ico"
+            app:layout_constraintStart_toEndOf="@id/app_ico"
+            app:layout_constraintTop_toBottomOf="@+id/app_shortdescription"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/app_shortdescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/inter"
+            android:text="Join the endless running fun!"
+            android:textSize="14dp"
+            app:layout_constraintStart_toEndOf="@id/app_ico"
+            app:layout_constraintTop_toBottomOf="@+id/app_title" />
+
+        <TextView
+            android:id="@+id/app_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:fontFamily="@font/inter_semibold"
+            android:text="Subway Surfers "
+            android:textColor="@color/main_text_color"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@id/app_ico"
+            app:layout_constraintTop_toTopOf="@id/app_ico" />
+
+        <Space
+            android:id="@+id/space"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/app_ico" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="28dp"
+
+        android:layout_marginBottom="20dp"
+        android:text="@string/download_btn" />
+
+</FrameLayout>
