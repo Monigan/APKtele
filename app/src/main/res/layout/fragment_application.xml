@@ -6,67 +6,33 @@
     android:layout_height="match_parent"
     tools:context=".fragments.ApplicationFragment">
 
-    <ImageView
-        android:id="@+id/app_background"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTintMode="screen"
-        android:scaleType="centerCrop"
-        android:src="@drawable/sb_bg" />
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom">
-
-        <ImageView
-            android:id="@+id/app_mainbg"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:scaleType="fitXY"
-            android:src="@drawable/ic_app_mainbackground"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent" />
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginTop="36dp">
 
         <ImageView
             android:id="@+id/app_ico"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="24dp"
             android:src="@drawable/sb_ico"
-            app:layout_constraintStart_toStartOf="@+id/app_mainbg"
-            app:layout_constraintTop_toTopOf="@+id/app_mainbg" />
-
-        <TextView
-            android:id="@+id/app_fulldescription"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="29dp"
-            android:layout_marginHo=""
-            android:text="The Subway Surfers World Tour is feeling the love in San Francisco. Team up with Super Runner Tricky, her Trickster Board, and Pride Miss Maia. A Universal App with HD optimized graphics for retina resolution."
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/space" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="ico_description" />
 
         <TextView
-            android:id="@+id/app_tag"
+            android:id="@+id/app_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:background="@color/app_tag_color"
-            android:paddingHorizontal="17dp"
-            android:paddingVertical="2dp"
-            android:text="Action"
-
-            android:textColor="@color/main_color"
-            android:textSize="10sp"
-            app:layout_constraintBottom_toBottomOf="@id/app_ico"
+            android:fontFamily="@font/inter_semibold"
+            android:text="Subway Surfers "
+            android:textColor="@color/main_text_color"
+            android:textSize="24sp"
             app:layout_constraintStart_toEndOf="@id/app_ico"
-            app:layout_constraintTop_toBottomOf="@+id/app_shortdescription"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintTop_toTopOf="@id/app_ico" />
 
         <TextView
             android:id="@+id/app_shortdescription"
@@ -81,16 +47,21 @@
             app:layout_constraintTop_toBottomOf="@+id/app_title" />
 
         <TextView
-            android:id="@+id/app_title"
+            android:id="@+id/app_tag"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:fontFamily="@font/inter_semibold"
-            android:text="Subway Surfers "
-            android:textColor="@color/main_text_color"
-            android:textSize="24sp"
+            android:background="@color/app_tag_color"
+            android:paddingHorizontal="17dp"
+            android:paddingVertical="2dp"
+            android:text="Action"
+
+            android:textColor="#1565C0"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="@id/app_ico"
             app:layout_constraintStart_toEndOf="@id/app_ico"
-            app:layout_constraintTop_toTopOf="@id/app_ico" />
+            app:layout_constraintTop_toBottomOf="@+id/app_shortdescription"
+            app:layout_constraintVertical_bias="1.0" />
 
         <Space
             android:id="@+id/space"
@@ -101,15 +72,43 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/app_ico" />
 
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/app_fulldescription"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/space"
+            app:layout_constraintVertical_bias="0.0">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/screenshotsViewer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/app_fulldescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="The Subway Surfers World Tour is feeling the love in San Francisco. Team up with Super Runner Tricky, her Trickster Board, and Pride Miss Maia. A Universal App with HD optimized graphics for retina resolution."
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
         android:id="@+id/button"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
         android:layout_marginHorizontal="28dp"
-
-        android:layout_marginBottom="20dp"
         android:text="@string/download_btn" />
 
 </FrameLayout>

@@ -7,8 +7,11 @@
     <string name="homeButt">Home</string>
     <string name="backButt">Back</string>
 
+    <string name="backgroundSvg">BackgroundSVG</string>
+
 
     <string name="categories">Categories</string>
+    <string name="applications">Applications</string>
     <string name="special_deal">Special Deal</string>
     <string name="popular_app">Popular Applications</string>
 

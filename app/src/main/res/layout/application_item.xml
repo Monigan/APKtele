@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/inter"
-        android:text="@string/categories"
+        android:text="@string/applications"
         android:textColor="@color/main_text_color"
 
         android:textSize="12sp"
