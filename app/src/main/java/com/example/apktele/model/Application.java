@@ -5,20 +5,33 @@ import android.graphics.drawable.Drawable;
 public class Application {
     private int id;
     private String title;
-    private String ico = "sb";
-    private String description;
+    private String ico = "tmp";
+    private String fullDescription;
+    private String shortDescription;
+    private String applicationTag;
 
-    public Application(int id, String title, String ico, String description) {
+    public Application(int id, String title, String ico, String fullDescription, String shortDescription) {
         this.id = id;
         this.title = title;
         this.ico = ico;
-        this.description = description;
+        this.fullDescription = fullDescription;
+        this.shortDescription = shortDescription;
     }
 
-    public Application(int id, String title, String description) {
+    public Application(int id, String title, String fullDescription, String shortDescription) {
         this.id = id;
         this.title = title;
-        this.description = description;
+        this.fullDescription = fullDescription;
+        this.shortDescription = shortDescription;
+    }
+
+    public Application(int id, String title, String ico, String fullDescription, String shortDescription, String applicationTag) {
+        this.id = id;
+        this.title = title;
+        this.ico = ico;
+        this.fullDescription = fullDescription;
+        this.shortDescription = shortDescription;
+        this.applicationTag = applicationTag;
     }
 
     public int getId() {
@@ -45,11 +58,27 @@ public class Application {
         this.ico = ico;
     }
 
-    public String getDescription() {
-        return description;
+    public String getFullDescription() {
+        return fullDescription;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setFullDescription(String fullDescription) {
+        this.fullDescription = fullDescription;
+    }
+
+    public String getShortDescription() {
+        return shortDescription;
+    }
+
+    public void setShortDescription(String shortDescription) {
+        this.shortDescription = shortDescription;
+    }
+
+    public String getApplicationTag() {
+        return applicationTag;
+    }
+
+    public void setApplicationTag(String applicationTag) {
+        this.applicationTag = applicationTag;
     }
 }
