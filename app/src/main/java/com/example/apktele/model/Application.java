@@ -5,13 +5,14 @@ import android.graphics.drawable.Drawable;
 public class Application {
     private int id;
     private String title;
-    private Drawable ico = null;
+    private String ico = "sb";
     private String description;
 
-    public Application(int id, String title, Drawable ico) {
+    public Application(int id, String title, String ico, String description) {
         this.id = id;
         this.title = title;
         this.ico = ico;
+        this.description = description;
     }
 
     public Application(int id, String title, String description) {
@@ -36,11 +37,11 @@ public class Application {
         this.title = title;
     }
 
-    public Drawable getIco() {
+    public String getIco() {
         return ico;
     }
 
-    public void setIco(Drawable ico) {
+    public void setIco(String ico) {
         this.ico = ico;
     }
 

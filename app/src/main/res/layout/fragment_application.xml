@@ -6,105 +6,116 @@
     android:layout_height="match_parent"
     tools:context=".fragments.ApplicationFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="bottom"
-        android:layout_marginHorizontal="25dp"
-        android:layout_marginTop="36dp">
-
-        <ImageView
-            android:id="@+id/app_ico"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/sb_ico"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="ico_description" />
-
-        <TextView
-            android:id="@+id/app_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:fontFamily="@font/inter_semibold"
-            android:text="Subway Surfers "
-            android:textColor="@color/main_text_color"
-            android:textSize="24sp"
-            app:layout_constraintStart_toEndOf="@id/app_ico"
-            app:layout_constraintTop_toTopOf="@id/app_ico" />
-
-        <TextView
-            android:id="@+id/app_shortdescription"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="4dp"
-            android:fontFamily="@font/inter"
-            android:text="Join the endless running fun!"
-            android:textSize="14dp"
-            app:layout_constraintStart_toEndOf="@id/app_ico"
-            app:layout_constraintTop_toBottomOf="@+id/app_title" />
-
-        <TextView
-            android:id="@+id/app_tag"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:background="@color/app_tag_color"
-            android:paddingHorizontal="17dp"
-            android:paddingVertical="2dp"
-            android:text="Action"
-
-            android:textColor="#1565C0"
-            android:textSize="10sp"
-            app:layout_constraintBottom_toBottomOf="@id/app_ico"
-            app:layout_constraintStart_toEndOf="@id/app_ico"
-            app:layout_constraintTop_toBottomOf="@+id/app_shortdescription"
-            app:layout_constraintVertical_bias="1.0" />
-
-        <Space
-            android:id="@+id/space"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/app_ico" />
+        android:layout_height="match_parent">
 
         <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@+id/app_fulldescription"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/space"
-            app:layout_constraintVertical_bias="0.0">
+            android:orientation="vertical" >
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/screenshotsViewer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="bottom"
+                android:layout_marginHorizontal="25dp"
+                android:layout_marginTop="36dp">
+
+                <ImageView
+                    android:id="@+id/app_ico"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="ico_description"
+                    android:src="@drawable/ico_sb"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/app_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:fontFamily="@font/inter_semibold"
+                    android:text="Subway Surfers "
+                    android:textColor="@color/main_text_color"
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toEndOf="@id/app_ico"
+                    app:layout_constraintTop_toTopOf="@id/app_ico" />
+
+                <TextView
+                    android:id="@+id/app_shortdescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/inter"
+                    android:text="Join the endless running fun!"
+                    android:textSize="14dp"
+                    app:layout_constraintStart_toEndOf="@id/app_ico"
+                    app:layout_constraintTop_toBottomOf="@+id/app_title" />
+
+                <TextView
+                    android:id="@+id/app_tag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:background="@color/app_tag_color"
+                    android:paddingHorizontal="17dp"
+                    android:paddingVertical="2dp"
+                    android:text="Action"
+
+                    android:textColor="#1565C0"
+                    android:textSize="10sp"
+                    app:layout_constraintBottom_toBottomOf="@id/app_ico"
+                    app:layout_constraintStart_toEndOf="@id/app_ico"
+                    app:layout_constraintTop_toBottomOf="@+id/app_shortdescription"
+                    app:layout_constraintVertical_bias="1.0" />
+
+                <Space
+                    android:id="@+id/space"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/app_ico" />
+
+                <LinearLayout
+                    android:id="@+id/linearLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toTopOf="@+id/app_fulldescription"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/space"
+                    app:layout_constraintVertical_bias="0.0">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/screenshotsViewer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/app_fulldescription"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="The Subway Surfers World Tour is feeling the love in San Francisco. Team up with Super Runner Tricky, her Trickster Board, and Pride Miss Maia. A Universal App with HD optimized graphics for retina resolution."
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/app_fulldescription"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="The Subway Surfers World Tour is feeling the love in San Francisco. Team up with Super Runner Tricky, her Trickster Board, and Pride Miss Maia. A Universal App with HD optimized graphics for retina resolution."
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/downloadButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
