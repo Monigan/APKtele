@@ -32,6 +32,7 @@
                     android:layout_height="wrap_content"
                     android:contentDescription="ico_description"
                     android:src="@drawable/ico_sb"
+                    android:transitionName="applicationIcoTransition"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 

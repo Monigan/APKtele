@@ -10,6 +10,7 @@ public class ApplicationController {
     private String fullDescription;
     private String shortDescription;
     private String tag;
+    private int category = 1;
 
     private String downloadPath;
 
@@ -27,7 +28,7 @@ public class ApplicationController {
         try {
             setDate();
         }finally {
-            return new Application(id, title, ico, fullDescription, shortDescription, tag);
+            return new Application(id, title, ico, fullDescription, shortDescription, tag, category);
         }
     }
 
@@ -37,5 +38,6 @@ public class ApplicationController {
         this.fullDescription = "Fulldescription";
         this.shortDescription = "Shortdescription";
         this.tag = "Common";
+        this.category = 1;
     }
 }

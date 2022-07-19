@@ -11,11 +11,13 @@
         android:id="@+id/applicationIco"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:contentDescription="@string/categories"
+        app:layout_constraintBottom_toTopOf="@+id/applicationTitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_category_bg" />
+        app:srcCompat="@drawable/ic_cat_bg" />
 
     <TextView
         android:id="@+id/applicationTitle"

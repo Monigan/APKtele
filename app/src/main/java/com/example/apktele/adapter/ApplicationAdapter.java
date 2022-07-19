@@ -1,8 +1,11 @@
 package com.example.apktele.adapter;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,14 +50,20 @@ public class ApplicationAdapter extends RecyclerView.Adapter<ApplicationAdapter.
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, ApplicationActivity.class);
+
+                ActivityOptions activityOptions = ActivityOptions.makeSceneTransitionAnimation(
+                        (Activity) context,
+                        new Pair<View, String>(holder.applicationIco, "applicationIcoTransition"));
+
                 intent.putExtra("applicationId", applicationList.get(position).getId());
                 intent.putExtra("applicationTitle", applicationList.get(position).getTitle());
                 intent.putExtra("applicationIco", icoId);
                 intent.putExtra("applicationFullDescription", applicationList.get(position).getFullDescription());
                 intent.putExtra("applicationShortDescription", applicationList.get(position).getShortDescription());
                 intent.putExtra("applicationTag", applicationList.get(position).getApplicationTag());
-                applicationActivity = new ApplicationActivity();
-                context.startActivity(intent);
+//                applicationActivity = new ApplicationActivity();
+
+                context.startActivity(intent, activityOptions.toBundle());
             }
         });
     }

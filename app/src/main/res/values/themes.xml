@@ -19,9 +19,11 @@
     <style name="Theme.APKtele.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="android:windowActivityTransitions">true</item>
     </style>
 
     <style name="Theme.APKtele.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.APKtele.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
 </resources>

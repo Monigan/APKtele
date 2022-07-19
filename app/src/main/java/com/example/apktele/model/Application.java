@@ -3,7 +3,7 @@ package com.example.apktele.model;
 import android.graphics.drawable.Drawable;
 
 public class Application {
-    private int id;
+    private int id, category;
     private String title;
     private String ico = "tmp";
     private String fullDescription;
@@ -25,13 +25,14 @@ public class Application {
         this.shortDescription = shortDescription;
     }
 
-    public Application(int id, String title, String ico, String fullDescription, String shortDescription, String applicationTag) {
+    public Application(int id, String title, String ico, String fullDescription, String shortDescription, String applicationTag, int category) {
         this.id = id;
         this.title = title;
         this.ico = ico;
         this.fullDescription = fullDescription;
         this.shortDescription = shortDescription;
         this.applicationTag = applicationTag;
+        this.category = category;
     }
 
     public int getId() {
@@ -80,5 +81,13 @@ public class Application {
 
     public void setApplicationTag(String applicationTag) {
         this.applicationTag = applicationTag;
+    }
+
+    public int getCategory() {
+        return category;
+    }
+
+    public void setCategory(int category) {
+        this.category = category;
     }
 }

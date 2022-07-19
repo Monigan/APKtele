@@ -31,7 +31,12 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView categoryView;
     RecyclerView applicationView;
     CategoryAdapter categoryAdapter;
-    ApplicationAdapter applicationAdapter;
+
+
+    static ApplicationAdapter applicationAdapter;
+    static List<Application> applications = new ArrayList<>();
+    static List<Application> applicationsSave = new ArrayList<>();
+
 
     ApplicationController applicationController;
 
@@ -108,27 +113,48 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private List<Application> setTestApplications(){
-        List<Application> applications = new ArrayList<>();
         applicationController = new ApplicationController();
         applications.add(new Application(0, "Subway Surfers","sb","The Subway Surfers World Tour is feeling the love in San Francisco. Team up with Super Runner Tricky, her Trickster Board, and Pride Miss Maia.\n" +
-                "A Universal App with HD optimized graphics for retina resolution.", "Join the endless running fun!", "Arcade"));
+                "A Universal App with HD optimized graphics for retina resolution.", "Join the endless running fun!", "Arcade", 2));
         for (int i = 0; i<12; i++){
             applications.add(applicationController.getData());
         }
+
+        applicationsSave.addAll(applications);
+
         return applications;
     }
 
     private List<Category> setTestCategory(){
         List<Category> categories = new ArrayList<>();
-        categories.add(new Category(0, "Arcade", ContextCompat.getDrawable(this, R.drawable.ic_cat_arcade)));
-        categories.add(new Category(1, "Business", ContextCompat.getDrawable(this, R.drawable.ic_cat_business)));
-        categories.add(new Category(2, "Social", ContextCompat.getDrawable(this, R.drawable.ic_cat_social)));
-        categories.add(new Category(3, "Work", ContextCompat.getDrawable(this, R.drawable.ic_cat_work)));
-        categories.add(new Category(4, "Sport", ContextCompat.getDrawable(this, R.drawable.ic_cat_sport)));
-        categories.add(new Category(5, "Simulator", ContextCompat.getDrawable(this, R.drawable.ic_cat_simulator)));
-        categories.add(new Category(6, "Education", ContextCompat.getDrawable(this, R.drawable.ic_cat_education)));
+        categories.add(new Category(2, "Arcade", ContextCompat.getDrawable(this, R.drawable.ic_cat_arcade)));
+        categories.add(new Category(3, "Business", ContextCompat.getDrawable(this, R.drawable.ic_cat_business)));
+        categories.add(new Category(4, "Social", ContextCompat.getDrawable(this, R.drawable.ic_cat_social)));
+        categories.add(new Category(5, "Work", ContextCompat.getDrawable(this, R.drawable.ic_cat_work)));
+        categories.add(new Category(6, "Sport", ContextCompat.getDrawable(this, R.drawable.ic_cat_sport)));
+        categories.add(new Category(6, "Simulator", ContextCompat.getDrawable(this, R.drawable.ic_cat_simulator)));
+        categories.add(new Category(8, "Education", ContextCompat.getDrawable(this, R.drawable.ic_cat_education)));
+        categories.add(new Category(1, "Other", ContextCompat.getDrawable(this, R.drawable.ic_cat_bg)));
+        categories.add(new Category(0, "All", ContextCompat.getDrawable(this, R.drawable.ic_cat_bg)));
 
         return categories;
     }
 
+    public static void showApplicationByCategory(int category){
+
+        applications.clear();
+        applications.addAll(applicationsSave);
+        if (category != 0){
+            List<Application> filterApplications = new ArrayList<>();
+            for(Application app : applications){
+                if(app.getCategory() == category){
+                    filterApplications.add(app);
+                }
+            }
+            applications.clear();
+            applications.addAll(filterApplications);
+        }
+        applicationAdapter.notifyDataSetChanged();
+
+    }
 }
