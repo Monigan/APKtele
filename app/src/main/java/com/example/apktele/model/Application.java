@@ -31,7 +31,7 @@ public class Application {
         this.ico = ico;
         this.fullDescription = fullDescription;
         this.shortDescription = shortDescription;
-        this.applicationTag = applicationTag;
+        this.applicationTag = setTagToCategory(category);
         this.category = category;
     }
 
@@ -89,5 +89,19 @@ public class Application {
 
     public void setCategory(int category) {
         this.category = category;
+    }
+
+    private String setTagToCategory(int category){
+        switch (category){
+            case 1: return "Other";
+            case 2: return "Arcade";
+            case 3: return "Business";
+            case 4: return "Social";
+            case 5: return "Work";
+            case 6: return "Sport";
+            case 7: return "Simulator";
+            case 8: return "Education";
+            default: return "Common";
+        }
     }
 }

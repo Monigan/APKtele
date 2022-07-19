@@ -104,7 +104,6 @@
     <SearchView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/background_color"
         android:backgroundTintMode="add"
         android:paddingBottom="16dp"
         android:searchIcon="@drawable/ic_btn_search"

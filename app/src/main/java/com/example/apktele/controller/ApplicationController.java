@@ -1,6 +1,17 @@
 package com.example.apktele.controller;
 
+import android.content.Context;
+import android.os.AsyncTask;
+
+import androidx.annotation.NonNull;
+import androidx.loader.content.AsyncTaskLoader;
+
 import com.example.apktele.model.Application;
+
+import org.json.JSONObject;
+
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 public class ApplicationController {
 
@@ -14,6 +25,7 @@ public class ApplicationController {
 
     private String downloadPath;
 
+    JSONObject jsonObject;
 
     boolean badRequest = false;
 
@@ -26,6 +38,15 @@ public class ApplicationController {
 
     public Application getData(){
         try {
+//            URL url = new URL("https://");
+//            HttpURLConnection connection = (HttpURLConnection)url.openConnection();
+//            if(connection.getResponseCode() == HttpURLConnection.HTTP_OK){
+//
+//                setDate();
+//            }
+//            else {
+//                throw new Exception();
+//            }
             setDate();
         }finally {
             return new Application(id, title, ico, fullDescription, shortDescription, tag, category);
@@ -39,5 +60,13 @@ public class ApplicationController {
         this.shortDescription = "Shortdescription";
         this.tag = "Common";
         this.category = 1;
+    }
+
+    public abstract class GetURLDate extends AsyncTaskLoader<String> {
+
+        public GetURLDate(@NonNull Context context) {
+            super(context);
+
+        }
     }
 }

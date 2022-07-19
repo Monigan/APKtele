@@ -116,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
         applicationController = new ApplicationController();
         applications.add(new Application(0, "Subway Surfers","sb","The Subway Surfers World Tour is feeling the love in San Francisco. Team up with Super Runner Tricky, her Trickster Board, and Pride Miss Maia.\n" +
                 "A Universal App with HD optimized graphics for retina resolution.", "Join the endless running fun!", "Arcade", 2));
+
         for (int i = 0; i<12; i++){
             applications.add(applicationController.getData());
         }
