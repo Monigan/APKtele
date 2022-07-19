@@ -12,10 +12,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/categories"
+        android:transitionName="applicationIcoTransition"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_category_bg" />
+        app:srcCompat="@drawable/ico_tmp" />
 
     <TextView
         android:id="@+id/applicationTitle"
@@ -23,9 +24,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/inter"
+        android:gravity="center"
         android:text="@string/applications"
         android:textColor="@color/main_text_color"
-
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="@+id/applicationIco"
         app:layout_constraintStart_toStartOf="@+id/applicationIco"

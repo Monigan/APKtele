@@ -13,6 +13,17 @@
         ]]><item name="android:statusBarColor" tools:targetApi="l">@color/main_color</item>
         <!-- Customize your theme here. -->
         <item name="windowNoTitle">true</item>
-<!--        <item name="android:windowFullscreen">true</item>-->
+        <!--        <item name="android:windowFullscreen">true</item>-->
     </style>
+
+    <style name="Theme.APKtele.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowActivityTransitions">true</item>
+    </style>
+
+    <style name="Theme.APKtele.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.APKtele.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
 </resources>
