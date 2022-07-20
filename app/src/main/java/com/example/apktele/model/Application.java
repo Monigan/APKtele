@@ -25,6 +25,7 @@ public class Application {
         this.category = category;
     }
 
+
     public int getId() {
         return id;
     }
@@ -93,5 +94,18 @@ public class Application {
             case 8: return "Education";
             default: return "Common";
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Application{" +
+                "id=" + id +
+                ", category=" + category +
+                ", title='" + title + '\'' +
+                ", ico='" + ico + '\'' +
+                ", fullDescription='" + fullDescription + '\'' +
+                ", shortDescription='" + shortDescription + '\'' +
+                ", applicationTag='" + applicationTag + '\'' +
+                '}';
     }
 }

@@ -3,12 +3,16 @@ package com.example.apktele.controller;
 import android.accounts.NetworkErrorException;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.loader.content.AsyncTaskLoader;
 
+import com.example.apktele.dto.AplicationDTO;
 import com.example.apktele.model.Application;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONObject;
 
@@ -16,10 +20,14 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
+import java.util.List;
+import java.util.Objects;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -39,22 +47,18 @@ public class ApplicationController {
 
     private String downloadPath;
 
-    JSONObject jsonObject;
+    private String result;
 
-    boolean badRequest = false;
+    List<Application> applicationList = new ArrayList<>();
 
 
     public ApplicationController() {
-        this.id += 1;
-        this.title = "Application " + this.id;
-//        this.fullDescription = "Fulldescription";
-        this.shortDescription = "Shortdescription";
     }
 
-    public Application getData() {
+    public List<Application> getData() {
         try {
             //TODO Написать логику обработки JSON и заполнения данных о приложениях
-            URL url = new URL("https://10.0.2.2:8091/applications");
+            URL url = new URL("http://10.0.2.2:8091/applications");
             Request request = new Request.Builder()
                     .url(url)
                     .build();
@@ -67,56 +71,31 @@ public class ApplicationController {
                         }
 
                         @Override
-                        public void onResponse(Call call, final Response response) throws IOException {
-                            String res = response.body().string();
-                            setDate(res);
+                        public void onResponse(@NonNull Call call, @NonNull final Response response) throws IOException {
+                            result = Objects.requireNonNull(response.body()).string();
+                            Log.i("HTTP_RESPOND", result);
+                            Gson gson = new Gson();
+                            Type listType = new TypeToken<ArrayList<AplicationDTO>>(){}.getType();
+                            List<AplicationDTO> applicationDTOList = gson.fromJson(result, listType);
+                            Log.i("LIST_APPLICATIONS_DTO", String.valueOf(applicationDTOList));
+                            setDate(applicationDTOList);
                         }
                     });
-
-//            if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-//                connection.connect();
-//                InputStream stream = connection.getInputStream();
-//                reader = new BufferedReader(new InputStreamReader(stream));
-//
-//                StringBuffer buffer = new StringBuffer();
-//                String line = "";
-//
-//                while ((line = reader.readLine()) != null)
-//                    buffer.append(line).append("\n");
-//                setDate(buffer.toString());
-//                return new Application(id, title, ico, fullDescription, shortDescription, tag, category);
-//            } else {
-//                throw new NetworkErrorException();
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        } catch (NetworkErrorException e) {
-//            e.printStackTrace();
-//        } finally {
-//            if (connection != null) connection.disconnect();
-//            try {
-//                if (reader != null) reader.close();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-        return null;
+        return applicationList;
     }
 
 
-    private void setDate(String line) {
-        this.id += 1;
-        this.title = "Application " + this.id;
-        this.fullDescription = line;
-        this.shortDescription = "Shortdescription";
-        this.tag = "Common";
-        this.category = 1;
+    private void setDate(List<AplicationDTO> list) {
+        for (int i = 0; i < list.size(); i++){
+            applicationList.add(new Application(Math.toIntExact(list.get(i).getId()), list.get(i).getName(),"tmp",list.get(i).getDescription(),
+                    "Join the endless running fun!", "Arcade", 2));
+        }
     }
 
-    public String getFullDescription(){
-        return fullDescription;
+    public List<Application> getApplicationList() {
+        return applicationList;
     }
 }

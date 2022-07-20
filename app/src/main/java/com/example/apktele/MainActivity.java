@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.example.apktele.adapter.ApplicationAdapter;
@@ -58,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setApplicationRecycler(List<Application> applications) {
 
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
         applicationView = findViewById(R.id.applicationsView);
         applicationView.setLayoutManager(layoutManager);
 
@@ -72,14 +73,12 @@ public class MainActivity extends AppCompatActivity {
         applications.add(new Application(0, "Subway Surfers","sb","The Subway Surfers World Tour is feeling the love in San Francisco. Team up with Super Runner Tricky, her Trickster Board, and Pride Miss Maia.\n" +
                 "A Universal App with HD optimized graphics for retina resolution.", "Join the endless running fun!", "Arcade", 2));
 
-        for (int i = 0; i<1; i++){
-            if (applicationController.getData() == null) continue;
-            applications.add(applicationController.getData());
-        }
-        Toast.makeText(this, "Error - " + applicationController.getFullDescription(), Toast.LENGTH_LONG).show();
+//        if (applicationController.getData() != null) applications.addAll(applicationController.getData());
 
+        applicationController.getData();
+        applications.addAll(applicationController.getApplicationList());
         applicationsSave.addAll(applications);
-
+        Log.i("App_add", String.valueOf(applicationController.getApplicationList()));
         return applications;
     }
 
