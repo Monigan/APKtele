@@ -10,19 +10,9 @@ public class Application {
     private String shortDescription;
     private String applicationTag;
 
-    public Application(int id, String title, String ico, String fullDescription, String shortDescription) {
-        this.id = id;
-        this.title = title;
-        this.ico = ico;
-        this.fullDescription = fullDescription;
-        this.shortDescription = shortDescription;
-    }
 
-    public Application(int id, String title, String fullDescription, String shortDescription) {
-        this.id = id;
-        this.title = title;
-        this.fullDescription = fullDescription;
-        this.shortDescription = shortDescription;
+    public Application(int id, String title, String ico, int category){
+
     }
 
     public Application(int id, String title, String ico, String fullDescription, String shortDescription, String applicationTag, int category) {
