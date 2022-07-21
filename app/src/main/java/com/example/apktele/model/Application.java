@@ -1,9 +1,8 @@
 package com.example.apktele.model;
 
-import android.graphics.drawable.Drawable;
-
 public class Application {
-    private int id, category;
+    private Long id;
+    private int category;
     private String title;
     private String ico = "tmp";
     private String fullDescription;
@@ -15,7 +14,7 @@ public class Application {
 
     }
 
-    public Application(int id, String title, String ico, String fullDescription, String shortDescription, String applicationTag, int category) {
+    public Application(Long id, String title, String ico, String fullDescription, String shortDescription, int category) {
         this.id = id;
         this.title = title;
         this.ico = ico;
@@ -26,11 +25,11 @@ public class Application {
     }
 
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

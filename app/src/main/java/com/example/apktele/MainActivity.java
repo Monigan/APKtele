@@ -1,12 +1,18 @@
 package com.example.apktele;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.os.Bundle;
+import android.util.AttributeSet;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.apktele.adapter.ApplicationAdapter;
@@ -25,8 +31,9 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView applicationView;
     CategoryAdapter categoryAdapter;
     CategoryController categoryController;
+    private boolean flag = true;
 
-
+    @SuppressLint("StaticFieldLeak")
     static ApplicationAdapter applicationAdapter;
     static List<Application> applications = new ArrayList<>();
     static List<Application> applicationsSave = new ArrayList<>();
@@ -37,11 +44,22 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        applicationController = new ApplicationController();
+        applicationController.getData();
         setContentView(R.layout.activity_main);
 
         setCategoryRecycler(setCategory());
-        setApplicationRecycler(setTestApplications());
 
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if(flag){
+            setApplicationRecycler(setTestApplications());
+            flag = false;
+        }
 
     }
 
@@ -69,13 +87,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private List<Application> setTestApplications(){
-        applicationController = new ApplicationController();
-        applications.add(new Application(0, "Subway Surfers","sb","The Subway Surfers World Tour is feeling the love in San Francisco. Team up with Super Runner Tricky, her Trickster Board, and Pride Miss Maia.\n" +
-                "A Universal App with HD optimized graphics for retina resolution.", "Join the endless running fun!", "Arcade", 2));
+        applications.add(new Application(0L, "Subway Surfers","sb","The Subway Surfers World Tour is feeling the love in San Francisco. Team up with Super Runner Tricky, her Trickster Board, and Pride Miss Maia.\n" +
+                "A Universal App with HD optimized graphics for retina resolution.", "Join the endless running fun!", 2));
 
 //        if (applicationController.getData() != null) applications.addAll(applicationController.getData());
 
-        applicationController.getData();
+
         applications.addAll(applicationController.getApplicationList());
         applicationsSave.addAll(applications);
         Log.i("App_add", String.valueOf(applicationController.getApplicationList()));
@@ -83,24 +100,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private List<Category> setCategory(){
-        List<Category> categories = new ArrayList<>();
+        categoryController = new CategoryController(this);
 
-        categories.add(new Category(2, "Arcade", ContextCompat.getDrawable(this, R.drawable.ic_cat_arcade)));
-        categories.add(new Category(3, "Business", ContextCompat.getDrawable(this, R.drawable.ic_cat_business)));
-        categories.add(new Category(4, "Social", ContextCompat.getDrawable(this, R.drawable.ic_cat_social)));
-        categories.add(new Category(5, "Work", ContextCompat.getDrawable(this, R.drawable.ic_cat_work)));
-        categories.add(new Category(6, "Sport", ContextCompat.getDrawable(this, R.drawable.ic_cat_sport)));
-        categories.add(new Category(6, "Simulator", ContextCompat.getDrawable(this, R.drawable.ic_cat_simulator)));
-        categories.add(new Category(8, "Education", ContextCompat.getDrawable(this, R.drawable.ic_cat_education)));
-        categories.add(new Category(1, "Other", ContextCompat.getDrawable(this, R.drawable.ic_cat_bg)));
-        categories.add(new Category(0, "All", ContextCompat.getDrawable(this, R.drawable.ic_cat_bg)));
+//        categories.add(new Category(2, "Arcade", ContextCompat.getDrawable(this, R.drawable.ic_cat_arcade)));
+//        categories.add(new Category(3, "Business", ContextCompat.getDrawable(this, R.drawable.ic_cat_business)));
+//        categories.add(new Category(4, "Social", ContextCompat.getDrawable(this, R.drawable.ic_cat_social)));
+//        categories.add(new Category(5, "Work", ContextCompat.getDrawable(this, R.drawable.ic_cat_work)));
+//        categories.add(new Category(6, "Sport", ContextCompat.getDrawable(this, R.drawable.ic_cat_sport)));
+//        categories.add(new Category(6, "Simulator", ContextCompat.getDrawable(this, R.drawable.ic_cat_simulator)));
+//        categories.add(new Category(8, "Education", ContextCompat.getDrawable(this, R.drawable.ic_cat_education)));
+//        categories.add(new Category(1, "Other", ContextCompat.getDrawable(this, R.drawable.ic_cat_bg)));
+//        categories.add(new Category(0, "All", ContextCompat.getDrawable(this, R.drawable.ic_cat_bg)));
 
-
-        return categories;
+        List<Category> categoryList = new ArrayList<>();
+        categoryList.addAll(categoryController.getCategoryList());
+        return categoryList;
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     public static void showApplicationByCategory(int category){
-
         applications.clear();
         applications.addAll(applicationsSave);
         if (category != 0){
@@ -114,6 +132,6 @@ public class MainActivity extends AppCompatActivity {
             applications.addAll(filterApplications);
         }
         applicationAdapter.notifyDataSetChanged();
-
     }
+
 }

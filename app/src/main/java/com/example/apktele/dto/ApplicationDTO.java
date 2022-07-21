@@ -1,6 +1,6 @@
 package com.example.apktele.dto;
 
-public class AplicationDTO {
+public class ApplicationDTO {
     private Long id;
     private String name;
     private String path_file;
