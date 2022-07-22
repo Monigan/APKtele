@@ -49,6 +49,21 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/bg_layout" />
 
+                <!--                ActivityButton-->
+                <Button
+                    android:id="@+id/btnActivity"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="163dp"
+                    android:text="@string/Activity"
+                    android:paddingBottom="15dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.955"
+                    app:layout_constraintStart_toStartOf="parent"
+                    />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
