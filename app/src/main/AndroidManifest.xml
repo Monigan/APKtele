@@ -38,6 +38,12 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".activity.AddApplicationPageActivity"
+            android:exported="false"
+            android:label="@string/title_activity_application"
+            android:theme="@style/Theme.APKtele.NoActionBar" />
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

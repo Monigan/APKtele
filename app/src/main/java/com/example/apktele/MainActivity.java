@@ -1,20 +1,17 @@
 package com.example.apktele;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
+import android.widget.Button;
 
+import com.example.apktele.activity.AddApplicationPageActivity;
 import com.example.apktele.adapter.ApplicationAdapter;
 import com.example.apktele.adapter.CategoryAdapter;
 import com.example.apktele.controller.ApplicationController;
@@ -26,6 +23,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
+    AddApplicationPageActivity appApplicationActivity;
+    Button btnActivity;
 
     RecyclerView categoryView;
     RecyclerView applicationView;
@@ -47,11 +47,20 @@ public class MainActivity extends AppCompatActivity {
         applicationController = new ApplicationController();
         applicationController.getData();
         setContentView(R.layout.activity_main);
-
         setCategoryRecycler(setCategory());
 
-
+        btnActivity = findViewById(R.id.btnActivity);
+        btnActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getBaseContext(), AddApplicationPageActivity.class);
+                //appApplicationActivity = new AppApplicationActivity();
+                //appApplicationActivity.showActivityWindow();
+                startActivity(intent);
+            }
+        });
     }
+
 
     @Override
     protected void onStart() {
