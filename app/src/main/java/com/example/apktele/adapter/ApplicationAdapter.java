@@ -17,16 +17,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.apktele.R;
 import com.example.apktele.activity.ApplicationActivity;
+import com.example.apktele.controller.ApplicationController;
 import com.example.apktele.model.Application;
 
 import java.util.List;
 
-public class ApplicationAdapter extends RecyclerView.Adapter<ApplicationAdapter.ApplicationViewHolder>{
+public class ApplicationAdapter extends RecyclerView.Adapter<ApplicationAdapter.ApplicationViewHolder> {
 
     Context context;
     List<Application> applicationList;
 
-    ApplicationActivity applicationActivity;
 
     public ApplicationAdapter(Context context, List<Application> applicationList) {
         this.context = context;
@@ -46,25 +46,28 @@ public class ApplicationAdapter extends RecyclerView.Adapter<ApplicationAdapter.
         holder.applicationTitle.setText(applicationList.get(position).getTitle());
         holder.applicationIco.setImageResource(icoId);
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context, ApplicationActivity.class);
+        holder.itemView.setOnClickListener(view -> {
+            Intent intent = new Intent(context, ApplicationActivity.class);
 
-                ActivityOptions activityOptions = ActivityOptions.makeSceneTransitionAnimation(
-                        (Activity) context,
-                        new Pair<View, String>(holder.applicationIco, "applicationIcoTransition"));
-
-                intent.putExtra("applicationId", applicationList.get(position).getId());
-                intent.putExtra("applicationTitle", applicationList.get(position).getTitle());
-                intent.putExtra("applicationIco", icoId);
-                intent.putExtra("applicationFullDescription", applicationList.get(position).getFullDescription());
-                intent.putExtra("applicationShortDescription", applicationList.get(position).getShortDescription());
-                intent.putExtra("applicationTag", applicationList.get(position).getApplicationTag());
-//                applicationActivity = new ApplicationActivity();
-
-                context.startActivity(intent, activityOptions.toBundle());
+            ApplicationController applicationController = new ApplicationController();
+            applicationController.getDataById(applicationList.get(position).getId());
+            Application application;
+            while ((application = applicationController.getApplication()) == null){
+                //TODO тоже самое что и в main-активити
             }
+
+            ActivityOptions activityOptions = ActivityOptions.makeSceneTransitionAnimation(
+                    (Activity) context,
+                    new Pair<>(holder.applicationIco, "applicationIcoTransition"));
+
+            intent.putExtra("applicationId", application.getId());
+            intent.putExtra("applicationTitle", application.getTitle());
+            intent.putExtra("applicationIco", icoId);
+            intent.putExtra("applicationFullDescription", application.getFullDescription());
+            intent.putExtra("applicationShortDescription", application.getShortDescription());
+            intent.putExtra("applicationTag", application.getApplicationTag());
+
+            context.startActivity(intent, activityOptions.toBundle());
         });
     }
 
@@ -73,10 +76,11 @@ public class ApplicationAdapter extends RecyclerView.Adapter<ApplicationAdapter.
         return applicationList.size();
     }
 
-    public static final class ApplicationViewHolder extends RecyclerView.ViewHolder{
+    public static final class ApplicationViewHolder extends RecyclerView.ViewHolder {
 
         TextView applicationTitle, applicationDescription, applicationTag;
         ImageView applicationIco;
+
         public ApplicationViewHolder(@NonNull View itemView) {
             super(itemView);
             applicationTitle = itemView.findViewById(R.id.applicationTitle);

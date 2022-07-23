@@ -82,7 +82,7 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/inter_semibold"
-                android:text="@string/popular_app"
+                android:text="@string/listApplications"
                 android:textColor="#212121"
                 android:textSize="18sp" />
 
@@ -100,14 +100,4 @@
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
-
-    <SearchView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:backgroundTintMode="add"
-        android:paddingBottom="16dp"
-        android:searchIcon="@drawable/ic_btn_search"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

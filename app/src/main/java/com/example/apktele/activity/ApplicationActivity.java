@@ -5,7 +5,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -37,7 +36,6 @@ public class ApplicationActivity extends AppCompatActivity {
         applicationShortDescription.setText(getIntent().getStringExtra("applicationShortDescription"));
         applicationIco.setImageResource(getIntent().getIntExtra("applicationIco", 0));
         applicationTag.setText(getIntent().getStringExtra("applicationTag"));
-
 
 
     }

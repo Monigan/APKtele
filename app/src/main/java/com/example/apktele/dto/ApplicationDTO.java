@@ -1,11 +1,18 @@
 package com.example.apktele.dto;
 
+import androidx.annotation.NonNull;
+
+import java.util.ArrayList;
+
 public class ApplicationDTO {
-    private Long id;
-    private String name;
-    private String path_file;
-    private String description;
-    private Double rating;
+    public Long id;
+    public String name;
+    public String path_file;
+    public String description;
+    public Double rating;
+    public ArrayList<String> screenshots;
+    public ArrayList<String> reviews;
+    public ArrayList<String> categories;
 
     public Long getId() {
         return id;
@@ -47,14 +54,42 @@ public class ApplicationDTO {
         this.rating = rating;
     }
 
+    public ArrayList<String> getScreenshots() {
+        return screenshots;
+    }
+
+    public void setScreenshots(ArrayList<String> screenshots) {
+        this.screenshots = screenshots;
+    }
+
+    public ArrayList<String> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(ArrayList<String> reviews) {
+        this.reviews = reviews;
+    }
+
+    public ArrayList<String> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(ArrayList<String> categories) {
+        this.categories = categories;
+    }
+
+    @NonNull
     @Override
     public String toString() {
-        return "AplicationDTO{" +
+        return "ApplicationDTO{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", path_file='" + path_file + '\'' +
                 ", description='" + description + '\'' +
                 ", rating=" + rating +
+                ", screenshots=" + screenshots +
+                ", reviews=" + reviews +
+                ", categories=" + categories +
                 '}';
     }
 }

@@ -1,5 +1,7 @@
 package com.example.apktele.model;
 
+import androidx.annotation.NonNull;
+
 public class Application {
     private Long id;
     private int category;
@@ -10,7 +12,7 @@ public class Application {
     private String applicationTag;
 
 
-    public Application(int id, String title, String ico, int category){
+    public Application(int id, String title, String ico, int category) {
 
     }
 
@@ -81,20 +83,30 @@ public class Application {
         this.category = category;
     }
 
-    private String setTagToCategory(int category){
-        switch (category){
-            case 1: return "Other";
-            case 2: return "Arcade";
-            case 3: return "Business";
-            case 4: return "Social";
-            case 5: return "Work";
-            case 6: return "Sport";
-            case 7: return "Simulator";
-            case 8: return "Education";
-            default: return "Common";
+    private String setTagToCategory(int category) {
+        switch (category) {
+            case 1:
+                return "Other";
+            case 2:
+                return "Arcade";
+            case 3:
+                return "Business";
+            case 4:
+                return "Social";
+            case 5:
+                return "Work";
+            case 6:
+                return "Sport";
+            case 7:
+                return "Simulator";
+            case 8:
+                return "Education";
+            default:
+                return "Common";
         }
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "Application{" +

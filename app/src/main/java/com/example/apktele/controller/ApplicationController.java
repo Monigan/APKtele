@@ -25,16 +25,15 @@ import okhttp3.Response;
 
 public class ApplicationController {
 
-    private String result;
-
     List<Application> applicationList = new ArrayList<>();
     Application application;
+    private String result;
 
 
     public ApplicationController() {
     }
 
-    public List<Application> getData() {
+    public void getData() {
         try {
             //TODO Написать логику обработки JSON и заполнения данных о приложениях
             URL url = new URL("http://10.0.2.2:8091/applications");
@@ -54,7 +53,8 @@ public class ApplicationController {
                             result = Objects.requireNonNull(response.body()).string();
                             Log.i("HTTP_RESPOND", result);
                             Gson gson = new Gson();
-                            Type listType = new TypeToken<ArrayList<ApplicationDTO>>(){}.getType();
+                            Type listType = new TypeToken<ArrayList<ApplicationDTO>>() {
+                            }.getType();
                             List<ApplicationDTO> applicationDTOList = gson.fromJson(result, listType);
                             Log.i("LIST_APPLICATIONS_DTO", String.valueOf(applicationDTOList));
                             setDateList(applicationDTOList);
@@ -64,10 +64,9 @@ public class ApplicationController {
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-        return applicationList;
     }
 
-    public Application getDataById(long id){
+    public void getDataById(long id) {
         try {
             //TODO Написать логику обработки JSON и заполнения данных о приложениях
             URL url = new URL("http://10.0.2.2:8091/applications/search/" + id);
@@ -87,8 +86,9 @@ public class ApplicationController {
                             result = Objects.requireNonNull(response.body()).string();
                             Log.i("HTTP_RESPOND", result);
                             Gson gson = new Gson();
-                            Type listType = new TypeToken<ArrayList<ApplicationDTO>>(){}.getType();
-                            ApplicationDTO applicationDTO = gson.fromJson(result, listType);
+                            Type objectType = new TypeToken<ApplicationDTO>() {
+                            }.getType();
+                            ApplicationDTO applicationDTO = gson.fromJson(result, objectType);
                             Log.i("LIST_APPLICATIONS_DTO", String.valueOf(applicationDTO));
                             setDate(applicationDTO);
 
@@ -97,16 +97,15 @@ public class ApplicationController {
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-        return null;
     }
 
-    private void setDate(ApplicationDTO applicationDTO){
+    private void setDate(ApplicationDTO applicationDTO) {
         application = new Application(applicationDTO.getId(), applicationDTO.getName(), "tmp", applicationDTO.getDescription(), "ShortDescription", 0);
     }
 
     private void setDateList(List<ApplicationDTO> list) {
-        for (int i = 0; i < list.size(); i++){
-            applicationList.add(new Application(list.get(i).getId(), list.get(i).getName(),"tmp",list.get(i).getDescription(),
+        for (int i = 0; i < list.size(); i++) {
+            applicationList.add(new Application(list.get(i).getId(), list.get(i).getName(), "tmp", list.get(i).getDescription(),
                     "Join the endless running fun!", 0));
         }
     }

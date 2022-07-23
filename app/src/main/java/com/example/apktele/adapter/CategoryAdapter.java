@@ -2,7 +2,6 @@ package com.example.apktele.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,12 +39,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         holder.categoryTitle.setText(categories.get(position).getTitle());
         holder.categoryIco.setImageDrawable(categories.get(position).getIco());
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                MainActivity.showApplicationByCategory(categories.get(position).getId());
-            }
-        });
+        holder.itemView.setOnClickListener(view -> MainActivity.showApplicationByCategory(categories.get(position).getId()));
     }
 
     @Override
@@ -53,7 +47,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         return categories.size();
     }
 
-    public static final class CategoryViewHolder extends RecyclerView.ViewHolder{
+    public static final class CategoryViewHolder extends RecyclerView.ViewHolder {
 
         TextView categoryTitle;
         ImageView categoryIco;

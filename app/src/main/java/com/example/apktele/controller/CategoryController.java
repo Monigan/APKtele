@@ -26,7 +26,7 @@ public class CategoryController {
         categoryList.add(new Category(0, "All", ContextCompat.getDrawable(context, R.drawable.ic_cat_bg)));
     }
 
-    public List<Category> getCategoryList(){
+    public List<Category> getCategoryList() {
         return categoryList;
     }
 }
