@@ -3,11 +3,11 @@ package com.example.apktele.model;
 import android.graphics.drawable.Drawable;
 
 public class Category {
-    private int id;
+    private Integer id;
     private String title;
     private Drawable ico;
 
-    public Category(int id, String title, Drawable ico) {
+    public Category(Integer id, String title, Drawable ico) {
         this.id = id;
         this.title = title;
         this.ico = ico;
@@ -21,11 +21,11 @@ public class Category {
         this.ico = ico;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

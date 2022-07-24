@@ -2,6 +2,7 @@ package com.example.apktele;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -38,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         if (category != 0) {
             List<Application> filterApplications = new ArrayList<>();
             for (Application app : applications) {
-                if (app.getCategory() == category) {
+                if (app.getMainCategory() == category) {
                     filterApplications.add(app);
                 }
             }
@@ -51,12 +52,18 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         applicationController = new ApplicationController();
         applicationController.getData();
         applications = applicationController.getApplicationList();
-        while (applications.isEmpty()) {
-            //TODO заменить данный костыль чем-нибудь более функциональным
+        try {
+            while (applications.isEmpty()) Thread.sleep(1);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
+//        while (applications.isEmpty()) {
+//            //TODO заменить данный костыль чем-нибудь более функциональным
+//        }
         setContentView(R.layout.activity_main);
 
         setApplicationRecycler(applications);
@@ -65,15 +72,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//        if (flag) {
-//            setApplicationRecycler(setTestApplications());
-//            flag = false;
-//        }
-//
-//    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (applicationsSave.isEmpty()) applicationsSave.addAll(applications);
+
+    }
 
     private void setCategoryRecycler(List<Category> categories) {
 
