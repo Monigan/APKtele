@@ -2,9 +2,14 @@ package com.example.apktele.model;
 
 import androidx.annotation.NonNull;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class Application {
     private Long id;
-    private int category;
+    private Integer mainCategory = 1;
+    private List<String> allCategory = Collections.singletonList("");
     private String title;
     private String ico = "tmp";
     private String fullDescription;
@@ -12,18 +17,35 @@ public class Application {
     private String applicationTag;
 
 
-    public Application(int id, String title, String ico, int category) {
+    private String descrRating = "0.0";
+    private String descrAuthor = "unknown";
+    private String descrSize = "unknown";
+    private String descrMPAA = "G";
 
-    }
 
-    public Application(Long id, String title, String ico, String fullDescription, String shortDescription, int category) {
+    public Application(Long id, String title, String ico, List<String> category) {
         this.id = id;
         this.title = title;
-        this.ico = ico;
+        if (ico != null) this.ico = ico;
+        if (category != null){
+            this.mainCategory = Integer.parseInt(category.get(0));
+            this.allCategory = category;
+        }
+        this.applicationTag = setTagToCategory(this.mainCategory);
+    }
+
+    public Application(Long id, String title, String ico, String fullDescription, String shortDescription, ArrayList<String> category) {
+        this.id = id;
+        this.title = title;
         this.fullDescription = fullDescription;
-        this.shortDescription = shortDescription;
-        this.applicationTag = setTagToCategory(category);
-        this.category = category;
+        if (shortDescription == null) this.shortDescription = setShortFullDescription(fullDescription);
+        else this.shortDescription = shortDescription;
+        if (ico != null) this.ico = ico;
+        if (category != null){
+            this.mainCategory = Integer.parseInt(category.get(0));
+            this.allCategory = category;
+        }
+        this.applicationTag = setTagToCategory(this.mainCategory);
     }
 
 
@@ -75,12 +97,20 @@ public class Application {
         this.applicationTag = applicationTag;
     }
 
-    public int getCategory() {
-        return category;
+    public Integer getMainCategory() {
+        return mainCategory;
     }
 
-    public void setCategory(int category) {
-        this.category = category;
+    public void setMainCategory(Integer mainCategory) {
+        this.mainCategory = mainCategory;
+    }
+
+    public List<String> getAllCategory() {
+        return allCategory;
+    }
+
+    public void setAllCategory(List<String> allCategory) {
+        this.allCategory = allCategory;
     }
 
     private String setTagToCategory(int category) {
@@ -102,8 +132,45 @@ public class Application {
             case 8:
                 return "Education";
             default:
-                return "Common";
+                return "Untagged";
         }
+    }
+
+    private String setShortFullDescription(String fullDescription){
+        if (fullDescription.length() < 30) return fullDescription;
+        else return fullDescription.substring(0, 60);
+    }
+
+    public String getDescrRating() {
+        return descrRating;
+    }
+
+    public void setDescrRating(String descrRating) {
+        this.descrRating = descrRating;
+    }
+
+    public String getDescrAuthor() {
+        return descrAuthor;
+    }
+
+    public void setDescrAuthor(String descrAuthor) {
+        this.descrAuthor = descrAuthor;
+    }
+
+    public String getDescrSize() {
+        return descrSize;
+    }
+
+    public void setDescrSize(String descrSize) {
+        this.descrSize = descrSize;
+    }
+
+    public String getDescrMPAA() {
+        return descrMPAA;
+    }
+
+    public void setDescrMPAA(String descrMPAA) {
+        this.descrMPAA = descrMPAA;
     }
 
     @NonNull
@@ -111,12 +178,17 @@ public class Application {
     public String toString() {
         return "Application{" +
                 "id=" + id +
-                ", category=" + category +
+                ", mainCategory=" + mainCategory +
+                ", allCategory=" + allCategory +
                 ", title='" + title + '\'' +
                 ", ico='" + ico + '\'' +
                 ", fullDescription='" + fullDescription + '\'' +
                 ", shortDescription='" + shortDescription + '\'' +
                 ", applicationTag='" + applicationTag + '\'' +
+                ", descrRating='" + descrRating + '\'' +
+                ", descrAuthor='" + descrAuthor + '\'' +
+                ", descrSize='" + descrSize + '\'' +
+                ", descrMPAA='" + descrMPAA + '\'' +
                 '}';
     }
 }
