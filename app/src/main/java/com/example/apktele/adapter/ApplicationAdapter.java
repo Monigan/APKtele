@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.example.apktele.MainActivity;
 import com.example.apktele.R;
 import com.example.apktele.activity.ApplicationActivity;
 import com.example.apktele.controller.ApplicationController;
@@ -26,7 +29,6 @@ public class ApplicationAdapter extends RecyclerView.Adapter<ApplicationAdapter.
 
     Context context;
     List<Application> applicationList;
-
 
     public ApplicationAdapter(Context context, List<Application> applicationList) {
         this.context = context;
@@ -42,19 +44,27 @@ public class ApplicationAdapter extends RecyclerView.Adapter<ApplicationAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull ApplicationViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        int icoId = context.getResources().getIdentifier("ico_" + applicationList.get(position).getIco(), "drawable", context.getPackageName());
         holder.applicationTitle.setText(applicationList.get(position).getTitle());
-        holder.applicationIco.setImageResource(icoId);
+        Integer icoId = context.getResources().getIdentifier("ico_" + applicationList.get(position).getIco(), "drawable", context.getPackageName());
 
+        Glide.with(context)
+                .load(applicationList.get(position).getIco())
+                .placeholder(icoId)
+                .into(holder.applicationIco);
         holder.itemView.setOnClickListener(view -> {
             Intent intent = new Intent(context, ApplicationActivity.class);
 
             ApplicationController applicationController = new ApplicationController();
             applicationController.getDataById(applicationList.get(position).getId());
-            Application application;
-            while ((application = applicationController.getApplication()) == null){
-                //TODO тоже самое что и в main-активити
+            Application application = null;
+            try {
+                while (application == null){
+                    application = applicationController.getApplication();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
+
 
             ActivityOptions activityOptions = ActivityOptions.makeSceneTransitionAnimation(
                     (Activity) context,
@@ -63,6 +73,7 @@ public class ApplicationAdapter extends RecyclerView.Adapter<ApplicationAdapter.
             intent.putExtra("applicationId", application.getId());
             intent.putExtra("applicationTitle", application.getTitle());
             intent.putExtra("applicationIco", icoId);
+            intent.putExtra("applicationIcoUrl", applicationList.get(position).getIco());
             intent.putExtra("applicationFullDescription", application.getFullDescription());
             intent.putExtra("applicationShortDescription", application.getShortDescription());
             intent.putExtra("applicationTag", application.getApplicationTag());

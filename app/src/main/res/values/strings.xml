@@ -28,7 +28,7 @@
     <string name="descrRating">Rating:</string>
     <string name="descrAuthor">Author:</string>
     <string name="descrSize">Size:</string>
-    <string name="descrMPAA">MPAA:</string>
+    <string name="descrMPAA">Age rating:</string>
 
 
     <string name="placeholder">Placeholder</string>

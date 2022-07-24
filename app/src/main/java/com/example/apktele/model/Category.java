@@ -4,8 +4,8 @@ import android.graphics.drawable.Drawable;
 
 public class Category {
     private Integer id;
-    private String title;
-    private Drawable ico;
+    private final String title;
+    private final Drawable ico;
 
     public Category(Integer id, String title, Drawable ico) {
         this.id = id;
@@ -15,10 +15,6 @@ public class Category {
 
     public Drawable getIco() {
         return ico;
-    }
-
-    public void setIco(Drawable ico) {
-        this.ico = ico;
     }
 
     public Integer getId() {
@@ -33,7 +29,4 @@ public class Category {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
 }

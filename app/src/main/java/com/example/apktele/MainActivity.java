@@ -2,14 +2,13 @@ package com.example.apktele;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.os.StrictMode;
-import android.util.Log;
-import android.widget.Toast;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.apktele.adapter.ApplicationAdapter;
 import com.example.apktele.adapter.CategoryAdapter;
 import com.example.apktele.controller.ApplicationController;
@@ -32,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
     CategoryController categoryController;
     ApplicationController applicationController;
 
+    ImageView bg;
+
     @SuppressLint("NotifyDataSetChanged")
     public static void showApplicationByCategory(int category) {
         applications.clear();
@@ -52,21 +53,21 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setContentView(R.layout.activity_main);
+        bg = findViewById(R.id.bg_layout);
         applicationController = new ApplicationController();
         applicationController.getData();
-        applications = applicationController.getApplicationList();
-        try {
-            while (applications.isEmpty()) Thread.sleep(1);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-//        while (applications.isEmpty()) {
-//            //TODO заменить данный костыль чем-нибудь более функциональным
-//        }
-        setContentView(R.layout.activity_main);
 
-        setApplicationRecycler(applications);
+        try {
+            while (applications.isEmpty()){
+                applications = applicationController.getApplicationList();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            setApplicationRecycler(applications);
+        }
+
         setCategoryRecycler(setCategory());
 
 

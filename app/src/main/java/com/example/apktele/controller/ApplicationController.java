@@ -1,9 +1,12 @@
 package com.example.apktele.controller;
 
+import android.content.Intent;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.example.apktele.MainActivity;
+import com.example.apktele.activity.ApplicationActivity;
 import com.example.apktele.dto.ApplicationDTO;
 import com.example.apktele.model.Application;
 import com.google.gson.Gson;
@@ -28,6 +31,7 @@ public class ApplicationController {
     List<Application> applicationList = new ArrayList<>();
     Application application;
     private String result;
+    String urlSite = "http://apteka-core-java-school-2022.apps.okd.stage.digital.rt.ru";
 
 
     public ApplicationController() {
@@ -36,7 +40,7 @@ public class ApplicationController {
     public void getData() {
         try {
             //TODO Написать логику обработки JSON и заполнения данных о приложениях
-            URL url = new URL("http://10.0.2.2:8091/applications");
+            URL url = new URL(urlSite + "/applications");
             Request request = new Request.Builder()
                     .url(url)
                     .build();
@@ -45,6 +49,8 @@ public class ApplicationController {
                     .enqueue(new Callback() {
                         @Override
                         public void onFailure(@NonNull final Call call, @NonNull IOException e) {
+                            Log.i("HTTP_RESPONSE: ", "not connected. " + e);
+                            applicationList.add(new Application());
                             e.printStackTrace();
                         }
 
@@ -69,7 +75,7 @@ public class ApplicationController {
     public void getDataById(long id) {
         try {
             //TODO Написать логику обработки JSON и заполнения данных о приложениях
-            URL url = new URL("http://10.0.2.2:8091/applications/search/" + id);
+            URL url = new URL(urlSite+"/applications/search/" + id);
             Request request = new Request.Builder()
                     .url(url)
                     .build();
@@ -101,7 +107,8 @@ public class ApplicationController {
 
     private void setDate(ApplicationDTO applicationDTO) {
         application = new Application(applicationDTO.getId(), applicationDTO.getName(), applicationDTO.getIcon_path_file(), applicationDTO.getFullDescription(),
-                applicationDTO.getShortDescription(), applicationDTO.getCategories());
+                applicationDTO.getShortDescription(), applicationDTO.getRating(), applicationDTO.getDescrAuthor(), applicationDTO.getDescrSize(),
+                applicationDTO.getDescrMPAA(), applicationDTO.getCategories());
     }
 
     private void setDateList(List<ApplicationDTO> list) {
@@ -118,8 +125,8 @@ public class ApplicationController {
         return application;
     }
 
-
-    public void getDownload(){
-        //TODO реализовать скачивание
-    }
+//  TODO реализовать скачивание
+//    public void getDownload(){
+    //
+//    }
 }

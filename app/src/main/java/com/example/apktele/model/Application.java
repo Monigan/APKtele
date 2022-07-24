@@ -1,5 +1,7 @@
 package com.example.apktele.model;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
@@ -23,6 +25,10 @@ public class Application {
     private String descrMPAA = "G";
 
 
+    public Application() {
+        this.ico = null;
+    }
+
     public Application(Long id, String title, String ico, List<String> category) {
         this.id = id;
         this.title = title;
@@ -34,20 +40,23 @@ public class Application {
         this.applicationTag = setTagToCategory(this.mainCategory);
     }
 
-    public Application(Long id, String title, String ico, String fullDescription, String shortDescription, ArrayList<String> category) {
+    public Application(Long id, String title, String ico, String fullDescription, String shortDescription,
+                       String descrRating, String descrAuthor, String descrSize, String descrMPAA, ArrayList<String> category) {
         this.id = id;
         this.title = title;
-        this.fullDescription = fullDescription;
-        if (shortDescription == null) this.shortDescription = setShortFullDescription(fullDescription);
-        else this.shortDescription = shortDescription;
         if (ico != null) this.ico = ico;
+        this.fullDescription = fullDescription;
+        this.shortDescription = shortDescription;
+        this.descrRating = descrRating;
+        this.descrAuthor = descrAuthor;
+        this.descrSize = descrSize;
+        this.descrMPAA = descrMPAA;
         if (category != null){
             this.mainCategory = Integer.parseInt(category.get(0));
             this.allCategory = category;
         }
         this.applicationTag = setTagToCategory(this.mainCategory);
     }
-
 
     public Long getId() {
         return id;
@@ -69,9 +78,6 @@ public class Application {
         return ico;
     }
 
-    public void setIco(String ico) {
-        this.ico = ico;
-    }
 
     public String getFullDescription() {
         return fullDescription;
@@ -137,6 +143,7 @@ public class Application {
     }
 
     private String setShortFullDescription(String fullDescription){
+        Log.i("APPLICATION_DESCRIPTION: ", fullDescription);
         if (fullDescription.length() < 30) return fullDescription;
         else return fullDescription.substring(0, 60);
     }

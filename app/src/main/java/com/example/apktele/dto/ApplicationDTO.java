@@ -9,12 +9,16 @@ public class ApplicationDTO {
     public String name;
     public String icon_path_file;
     public String path_file;
-    public String description;
+    public String fullDescription;
     public String shortDescription;
-    public Double rating;
+    public String rating;
     public ArrayList<String> screenshots;
     public ArrayList<String> reviews;
     public ArrayList<String> categories;
+
+    String descrSize;
+    String descrAuthor;
+    String descrMPAA;
 
     public Long getId() {
         return id;
@@ -57,18 +61,18 @@ public class ApplicationDTO {
     }
 
     public String getFullDescription() {
-        return description;
+        return fullDescription;
     }
 
     public void setFullDescription(String fullDescription) {
-        this.description = fullDescription;
+        this.fullDescription = fullDescription;
     }
 
-    public Double getRating() {
+    public String getRating() {
         return rating;
     }
 
-    public void setRating(Double rating) {
+    public void setRating(String rating) {
         this.rating = rating;
     }
 
@@ -96,6 +100,29 @@ public class ApplicationDTO {
         this.categories = categories;
     }
 
+    public String getDescrSize() {
+        return descrSize;
+    }
+
+    public void setDescrSize(String descrSize) {
+        this.descrSize = descrSize;
+    }
+
+    public String getDescrAuthor() {
+        return descrAuthor;
+    }
+
+    public void setDescrAuthor(String descrAuthor) {
+        this.descrAuthor = descrAuthor;
+    }
+
+    public String getDescrMPAA() {
+        return descrMPAA;
+    }
+
+    public void setDescrMPAA(String descrMPAA) {
+        this.descrMPAA = descrMPAA;
+    }
 
     @NonNull
     @Override
@@ -105,12 +132,15 @@ public class ApplicationDTO {
                 ", name='" + name + '\'' +
                 ", icon_path_file='" + icon_path_file + '\'' +
                 ", path_file='" + path_file + '\'' +
-                ", fullDescription='" + description + '\'' +
+                ", fullDescription='" + fullDescription + '\'' +
                 ", shortDescription='" + shortDescription + '\'' +
-                ", rating=" + rating +
+                ", rating='" + rating + '\'' +
                 ", screenshots=" + screenshots +
                 ", reviews=" + reviews +
                 ", categories=" + categories +
+                ", descrSize='" + descrSize + '\'' +
+                ", descrAuthor='" + descrAuthor + '\'' +
+                ", descrMPAA='" + descrMPAA + '\'' +
                 '}';
     }
 }
