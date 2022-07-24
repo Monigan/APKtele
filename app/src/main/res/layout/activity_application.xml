@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_color"
     tools:context=".activity.ApplicationActivity">
 
     <ScrollView
@@ -12,7 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -23,17 +21,17 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_gravity="bottom"
                 android:layout_marginHorizontal="25dp"
                 android:layout_marginTop="36dp">
 
                 <ImageView
                     android:id="@+id/applicationIco"
-                    android:layout_width="83dp"
-                    android:layout_height="83dp"
-                    android:contentDescription="@string/placeholder"
-                    android:src="@drawable/ico_tmp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="ico_description"
+                    android:src="@drawable/ico_sb"
                     android:transitionName="applicationIcoTransition"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -44,7 +42,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:fontFamily="@font/inter_semibold"
-                    android:text="@string/placeholder"
+                    android:text="Subway Surfers "
                     android:textColor="@color/main_text_color"
                     android:textSize="24sp"
                     app:layout_constraintStart_toEndOf="@id/applicationIco"
@@ -57,8 +55,8 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="4dp"
                     android:fontFamily="@font/inter"
-                    android:text="@string/placeholder"
-                    android:textSize="14sp"
+                    android:text="Join the endless running fun!"
+                    android:textSize="14dp"
                     app:layout_constraintStart_toEndOf="@id/applicationIco"
                     app:layout_constraintTop_toBottomOf="@+id/applicationTitle" />
 
@@ -70,15 +68,14 @@
                     android:background="@color/app_tag_color"
                     android:paddingHorizontal="17dp"
                     android:paddingVertical="2dp"
-                    android:text="@string/placeholder"
+                    android:text="Action"
 
-                    android:textColor="#3F51B5"
+                    android:textColor="#1565C0"
                     android:textSize="10sp"
                     app:layout_constraintBottom_toBottomOf="@id/applicationIco"
                     app:layout_constraintStart_toEndOf="@id/applicationIco"
                     app:layout_constraintTop_toBottomOf="@+id/applicationShortDescription"
-                    app:layout_constraintVertical_bias="1.0"
-                    tools:ignore="SmallSp" />
+                    app:layout_constraintVertical_bias="1.0" />
 
                 <Space
                     android:id="@+id/space"
@@ -91,14 +88,15 @@
 
                 <LinearLayout
                     android:id="@+id/linearLayout"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginVertical="8dp"
                     android:orientation="horizontal"
+                    app:layout_constraintBottom_toTopOf="@+id/applicationFullDescription"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/space">
+                    app:layout_constraintTop_toBottomOf="@+id/space"
+                    app:layout_constraintVertical_bias="0.0">
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/applicationScreenshots"
@@ -110,119 +108,12 @@
                     android:id="@+id/applicationFullDescription"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/placeholder"
-                    android:layout_marginTop="8dp"
-                    app:layout_constraintBottom_toTopOf="@+id/ratingLayout"
+                    android:text="The Subway Surfers World Tour is feeling the love in San Francisco. Team up with Super Runner Tricky, her Trickster Board, and Pride Miss Maia. A Universal App with HD optimized graphics for retina resolution."
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
-                <LinearLayout
-                    android:id="@+id/ratingLayout"
-                    android:layout_marginTop="16dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    app:layout_constraintBottom_toTopOf="@id/descriptionTable"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/applicationFullDescription">
-
-                    <RatingBar
-                        android:id="@+id/ratingBar"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:contentDescription="@string/placeholder"/>
-
-                    <Button
-                        android:id="@+id/ratingBtn"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:backgroundTint="@color/main_color"
-                        android:text="@string/rate_btn"
-                        android:textColor="@color/white" />
-                </LinearLayout>
-
-                <TableLayout
-                    android:id="@+id/descriptionTable"
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_marginTop="8dp"
-                    android:gravity="center"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/ratingLayout">
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <TextView
-                            android:id="@+id/descrRating"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/descrRating" />
-
-                        <TextView
-                            android:id="@+id/descrRatingSet"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/placeholder" />
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <TextView
-                            android:id="@+id/descrAuthor"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/descrAuthor" />
-
-                        <TextView
-                            android:id="@+id/descrAuthorSet"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/placeholder" />
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <TextView
-                            android:id="@+id/descrSize"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/descrSize" />
-
-                        <TextView
-                            android:id="@+id/descrSizeSet"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/placeholder" />
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <TextView
-                            android:id="@+id/descrMPAA"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/descrMPAA" />
-
-                        <TextView
-                            android:id="@+id/descrMPAASet"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/placeholder" />
-                    </TableRow>
-                </TableLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
@@ -234,9 +125,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:layout_marginHorizontal="28dp"
-        android:backgroundTint="@color/main_color"
         android:text="@string/download_btn"
-        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

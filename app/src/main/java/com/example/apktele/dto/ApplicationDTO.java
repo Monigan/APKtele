@@ -7,10 +7,8 @@ import java.util.ArrayList;
 public class ApplicationDTO {
     public Long id;
     public String name;
-    public String icon_path_file;
     public String path_file;
     public String description;
-    public String shortDescription;
     public Double rating;
     public ArrayList<String> screenshots;
     public ArrayList<String> reviews;
@@ -32,14 +30,6 @@ public class ApplicationDTO {
         this.name = name;
     }
 
-    public String getIcon_path_file() {
-        return icon_path_file;
-    }
-
-    public void setIcon_path_file(String icon_path_file) {
-        this.icon_path_file = icon_path_file;
-    }
-
     public String getPath_file() {
         return path_file;
     }
@@ -48,20 +38,12 @@ public class ApplicationDTO {
         this.path_file = path_file;
     }
 
-    public String getShortDescription() {
-        return shortDescription;
-    }
-
-    public void setShortDescription(String shortDescription) {
-        this.shortDescription = shortDescription;
-    }
-
-    public String getFullDescription() {
+    public String getDescription() {
         return description;
     }
 
-    public void setFullDescription(String fullDescription) {
-        this.description = fullDescription;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Double getRating() {
@@ -96,17 +78,14 @@ public class ApplicationDTO {
         this.categories = categories;
     }
 
-
     @NonNull
     @Override
     public String toString() {
         return "ApplicationDTO{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", icon_path_file='" + icon_path_file + '\'' +
                 ", path_file='" + path_file + '\'' +
-                ", fullDescription='" + description + '\'' +
-                ", shortDescription='" + shortDescription + '\'' +
+                ", description='" + description + '\'' +
                 ", rating=" + rating +
                 ", screenshots=" + screenshots +
                 ", reviews=" + reviews +

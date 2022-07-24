@@ -3,6 +3,7 @@ package com.example.apktele;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -17,7 +18,6 @@ import com.example.apktele.model.Category;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,15 +32,13 @@ public class MainActivity extends AppCompatActivity {
     ApplicationController applicationController;
 
     @SuppressLint("NotifyDataSetChanged")
-    public static void showApplicationByCategory(Integer category) {
+    public static void showApplicationByCategory(int category) {
         applications.clear();
         applications.addAll(applicationsSave);
-        Log.i("CATEGORY-1 ", String.valueOf(category));
         if (category != 0) {
             List<Application> filterApplications = new ArrayList<>();
             for (Application app : applications) {
-                Log.i("CATEGORY-2 ", String.valueOf(app.getMainCategory()));
-                if (Objects.equals(app.getMainCategory(), category)) {
+                if (app.getCategory() == category) {
                     filterApplications.add(app);
                 }
             }
@@ -60,17 +58,22 @@ public class MainActivity extends AppCompatActivity {
             //TODO заменить данный костыль чем-нибудь более функциональным
         }
         setContentView(R.layout.activity_main);
+
         setApplicationRecycler(applications);
         setCategoryRecycler(setCategory());
+
+
     }
 
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        applicationsSave.addAll(applications);
-
-    }
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//        if (flag) {
+//            setApplicationRecycler(setTestApplications());
+//            flag = false;
+//        }
+//
+//    }
 
     private void setCategoryRecycler(List<Category> categories) {
 

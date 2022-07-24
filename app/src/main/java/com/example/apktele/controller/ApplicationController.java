@@ -100,13 +100,13 @@ public class ApplicationController {
     }
 
     private void setDate(ApplicationDTO applicationDTO) {
-        application = new Application(applicationDTO.getId(), applicationDTO.getName(), applicationDTO.getIcon_path_file(), applicationDTO.getFullDescription(),
-                applicationDTO.getShortDescription(), applicationDTO.getCategories());
+        application = new Application(applicationDTO.getId(), applicationDTO.getName(), "tmp", applicationDTO.getDescription(), "ShortDescription", 0);
     }
 
     private void setDateList(List<ApplicationDTO> list) {
         for (int i = 0; i < list.size(); i++) {
-            applicationList.add(new Application(list.get(i).getId(), list.get(i).getName(), list.get(i).getIcon_path_file(), list.get(i).getCategories()));
+            applicationList.add(new Application(list.get(i).getId(), list.get(i).getName(), "tmp", list.get(i).getDescription(),
+                    "Join the endless running fun!", 0));
         }
     }
 
@@ -116,10 +116,5 @@ public class ApplicationController {
 
     public Application getApplication() {
         return application;
-    }
-
-
-    public void getDownload(){
-        //TODO реализовать скачивание
     }
 }
