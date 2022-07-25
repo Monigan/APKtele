@@ -11,10 +11,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.apktele.MainActivity;
 import com.example.apktele.R;
+import com.example.apktele.controller.ApplicationController;
 
-import java.util.Objects;
 
 
 public class ApplicationActivity extends AppCompatActivity {
@@ -64,6 +63,11 @@ public class ApplicationActivity extends AppCompatActivity {
         descrMPAA.setText(getIntent().getStringExtra("descrMPAA"));
 
         ratingButton.setOnClickListener(view -> Toast.makeText(ApplicationActivity.this, "Данная функция находится в разработке!", Toast.LENGTH_LONG).show());
+
+        downloadButton.setOnClickListener(view -> {
+            Log.i("APPLICATION_DOWNLOAD", "start");
+            Toast.makeText(ApplicationActivity.this, "Данная функция находится в разработке!", Toast.LENGTH_LONG).show();
+        });
 
     }
 

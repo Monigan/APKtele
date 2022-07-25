@@ -77,6 +77,7 @@ public class ApplicationAdapter extends RecyclerView.Adapter<ApplicationAdapter.
             intent.putExtra("applicationFullDescription", application.getFullDescription());
             intent.putExtra("applicationShortDescription", application.getShortDescription());
             intent.putExtra("applicationTag", application.getApplicationTag());
+            intent.putExtra("applicationMainCategory", application.getMainCategory());
 
             intent.putExtra("descrRating", application.getDescrRating());
             intent.putExtra("descrAuthor", application.getDescrAuthor());

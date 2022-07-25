@@ -1,12 +1,8 @@
 package com.example.apktele.controller;
-
-import android.content.Intent;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.example.apktele.MainActivity;
-import com.example.apktele.activity.ApplicationActivity;
 import com.example.apktele.dto.ApplicationDTO;
 import com.example.apktele.model.Application;
 import com.google.gson.Gson;
@@ -14,6 +10,7 @@ import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -32,6 +29,7 @@ public class ApplicationController {
     Application application;
     private String result;
     String urlSite = "http://apteka-core-java-school-2022.apps.okd.stage.digital.rt.ru";
+    String urlStorage = "https://apteka-store-java-school-2022.apps.okd.stage.digital.rt.ru/files/image/";
 
 
     public ApplicationController() {
@@ -113,7 +111,7 @@ public class ApplicationController {
 
     private void setDateList(List<ApplicationDTO> list) {
         for (int i = 0; i < list.size(); i++) {
-            applicationList.add(new Application(list.get(i).getId(), list.get(i).getName(), list.get(i).getIcon_path_file(), list.get(i).getCategories()));
+            applicationList.add(new Application(list.get(i).getId(), list.get(i).getName(), urlStorage + list.get(i).getIcon_path_file(), list.get(i).getCategories()));
         }
     }
 
@@ -126,7 +124,12 @@ public class ApplicationController {
     }
 
 //  TODO реализовать скачивание
-//    public void getDownload(){
-    //
-//    }
+    public void getDownload(URL url) throws IOException {
+        HttpURLConnection connection = (HttpURLConnection)url.openConnection();
+        if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
+            // все ок
+        } else {
+            // ошибка
+        }
+    }
 }

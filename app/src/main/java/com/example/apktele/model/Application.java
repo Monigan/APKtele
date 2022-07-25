@@ -32,7 +32,7 @@ public class Application {
     public Application(Long id, String title, String ico, List<String> category) {
         this.id = id;
         this.title = title;
-        if (ico != null) this.ico = ico;
+        if (!ico.equals("https://apteka-store-java-school-2022.apps.okd.stage.digital.rt.ru/files/image/")) this.ico = ico;
         if (category != null){
             this.mainCategory = Integer.parseInt(category.get(0));
             this.allCategory = category;
