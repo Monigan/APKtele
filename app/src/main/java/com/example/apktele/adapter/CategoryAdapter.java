@@ -11,7 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.apktele.MainActivity;
+import com.example.apktele.OldMainActivity;
 import com.example.apktele.R;
 import com.example.apktele.model.Category;
 
@@ -39,7 +39,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         holder.categoryTitle.setText(categories.get(position).getTitle());
         holder.categoryIco.setImageDrawable(categories.get(position).getIco());
 
-        holder.itemView.setOnClickListener(view -> MainActivity.showApplicationByCategory(categories.get(position).getId()));
+        holder.itemView.setOnClickListener(view -> OldMainActivity.showApplicationByCategory(categories.get(position).getId()));
     }
 
     @Override

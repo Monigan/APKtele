@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_color"
-    tools:context=".activity.ApplicationActivity">
+    tools:context=".fragments.ApplicationFragment">
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -160,13 +159,13 @@
                         android:layout_height="match_parent">
 
                         <TextView
-                            android:id="@+id/descrRating"
+                            android:id="@+id/descriptionRating"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/descrRating" />
 
                         <TextView
-                            android:id="@+id/descrRatingSet"
+                            android:id="@+id/descriptionRatingSet"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/placeholder" />
@@ -177,13 +176,13 @@
                         android:layout_height="match_parent">
 
                         <TextView
-                            android:id="@+id/descrAuthor"
+                            android:id="@+id/descriptionAuthor"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/descrAuthor" />
 
                         <TextView
-                            android:id="@+id/descrAuthorSet"
+                            android:id="@+id/descriptionAuthorSet"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/placeholder" />
@@ -194,13 +193,13 @@
                         android:layout_height="match_parent">
 
                         <TextView
-                            android:id="@+id/descrSize"
+                            android:id="@+id/descriptionSize"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/descrSize" />
 
                         <TextView
-                            android:id="@+id/descrSizeSet"
+                            android:id="@+id/descriptionSizeSet"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/placeholder" />
@@ -211,19 +210,18 @@
                         android:layout_height="match_parent">
 
                         <TextView
-                            android:id="@+id/descrMPAA"
+                            android:id="@+id/descriptionMPAA"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/descrMPAA" />
 
                         <TextView
-                            android:id="@+id/descrMPAASet"
+                            android:id="@+id/descriptionMPAASet"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/placeholder" />
                     </TableRow>
                 </TableLayout>
-
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </ScrollView>
@@ -240,5 +238,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

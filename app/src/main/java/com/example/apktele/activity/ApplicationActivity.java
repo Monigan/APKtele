@@ -12,8 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.apktele.R;
-import com.example.apktele.controller.ApplicationController;
-
 
 
 public class ApplicationActivity extends AppCompatActivity {
@@ -41,7 +39,7 @@ public class ApplicationActivity extends AppCompatActivity {
         descrMPAA = findViewById(R.id.descrMPAASet);
 
         downloadButton = findViewById(R.id.downloadButton);
-        ratingButton = findViewById(R.id.ratingBtn);
+        ratingButton = findViewById(R.id.ratingButton);
 
 
 
@@ -57,10 +55,10 @@ public class ApplicationActivity extends AppCompatActivity {
 
         applicationTag.setText(getIntent().getStringExtra("applicationTag"));
 
-        descrSize.setText(getIntent().getStringExtra("descrSize"));
-        descrAuthor.setText(getIntent().getStringExtra("descrAuthor"));
-        descrRating.setText(getIntent().getStringExtra("descrRating"));
-        descrMPAA.setText(getIntent().getStringExtra("descrMPAA"));
+        descrSize.setText(getIntent().getStringExtra("descriptionSize"));
+        descrAuthor.setText(getIntent().getStringExtra("descriptionAuthor"));
+        descrRating.setText(getIntent().getStringExtra("descriptionRating"));
+        descrMPAA.setText(getIntent().getStringExtra("descriptionMPAA"));
 
         ratingButton.setOnClickListener(view -> Toast.makeText(ApplicationActivity.this, "Данная функция находится в разработке!", Toast.LENGTH_LONG).show());
 
